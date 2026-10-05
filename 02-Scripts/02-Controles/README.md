@@ -1,4 +1,4 @@
-﻿# 02 - Controles
+# 02 - Controles
 
 Modelos de controle de jogador e objetos com teclado, mouse e comportamento automatizado.
 

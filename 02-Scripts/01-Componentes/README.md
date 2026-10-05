@@ -1,4 +1,4 @@
-﻿# 01 - Componentes
+# 01 - Componentes
 
 Modelos de componentes de jogo (entidades reutilizaveis) em React + Phaser.
 

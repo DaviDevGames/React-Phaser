@@ -1,4 +1,4 @@
-﻿# 03 - Cenarios
+# 03 - Cenarios
 
 Modelos para construcao de cenarios com camadas, troca de fundo e parallax.
 

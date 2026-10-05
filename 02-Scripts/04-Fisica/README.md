@@ -1,4 +1,4 @@
-﻿# 04 - Fisica
+# 04 - Fisica
 
 Modelos de fisica usando Arcade Physics do Phaser.
 

@@ -1,4 +1,4 @@
-﻿# 06 - UI-UX
+# 06 - UI-UX
 
 Modelos de interface e experiencia de usuario para jogos React + Phaser.
 

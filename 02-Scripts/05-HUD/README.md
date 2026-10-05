@@ -1,4 +1,4 @@
-﻿# 05 - HUD
+# 05 - HUD
 
 Modelos de HUD (Heads-Up Display) para diferentes tipos de jogo.
 

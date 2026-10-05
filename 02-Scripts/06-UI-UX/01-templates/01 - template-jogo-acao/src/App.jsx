@@ -1,4 +1,4 @@
-﻿import PhaserGame from './PhaserGame.jsx'
+import PhaserGame from './PhaserGame.jsx'
 
 export default function App() {
   return (
