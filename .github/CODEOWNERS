@@ -1,0 +1,12 @@
+# CODEOWNERS
+# Define quem é automaticamente solicitado para revisar Pull Requests.
+# Saiba mais: https://docs.github.com/articles/about-code-owners
+#
+# Ajuste os caminhos/usuários abaixo conforme a equipe de mantenedores crescer.
+
+* @davidcreator
+
+# Exemplos de como delegar partes específicas no futuro:
+# /02-Scripts/04-Fisica/   @usuario-especialista-fisica
+# /08-Complementar/06-sprites/   @usuario-especialista-sprites
+# /00-Ebooks/                     @usuario-responsavel-conteudo

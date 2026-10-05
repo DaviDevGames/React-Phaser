@@ -1,0 +1,37 @@
+# Regras usadas por actions/labeler para rotular PRs conforme os arquivos alterados.
+# https://github.com/actions/labeler
+
+documentacao:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "00-Ebooks/**"
+          - "01-Ambiente/**"
+
+scripts:
+  - changed-files:
+      - any-glob-to-any-file: "02-Scripts/**"
+
+jogos:
+  - changed-files:
+      - any-glob-to-any-file: "03-Jogos/**"
+
+sprites-vfx-sounds:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "04-Sprites/**"
+          - "06-VFX/**"
+          - "07-Sounds/**"
+          - "08-Complementar/**"
+
+infraestrutura:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "*.yml"
+          - "*.yaml"
+          - ".gitignore"
+
+gdd:
+  - changed-files:
+      - any-glob-to-any-file: "09-gdd/**"

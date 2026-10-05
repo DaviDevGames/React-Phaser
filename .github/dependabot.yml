@@ -1,0 +1,37 @@
+version: 2
+updates:
+  # Atualiza dependências npm/Vite de todos os projetos de exemplo do repositório.
+  # "directories" com glob cobre as dezenas de subprojetos (02-Scripts, 03-Jogos, etc.)
+  # sem precisar listar cada pasta manualmente.
+  - package-ecosystem: "npm"
+    directories:
+      - "/"
+      - "/base"
+      - "/pong-v2"
+      - "/02-Scripts/**"
+      - "/03-Jogos/**"
+      - "/08-Complementar/**"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      phaser-react:
+        patterns:
+          - "phaser"
+          - "react"
+          - "react-dom"
+      dev-dependencies:
+        dependency-type: "development"
+
+  # Mantém as próprias GitHub Actions atualizadas.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "ci"
