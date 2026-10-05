@@ -1,0 +1,25 @@
+name: Verificar links quebrados na documentação
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+  schedule:
+    # Toda segunda-feira às 09:00 UTC, para pegar links externos que caíram.
+    - cron: "0 9 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checar links em arquivos Markdown
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: "yes"
+          use-verbose-mode: "yes"
+          config-file: ".github/mlc_config.json"
+          check-modified-files-only: "yes"
+          base-branch: "main"

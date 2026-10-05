@@ -1,0 +1,84 @@
+name: CI - Build dos exemplos alterados
+
+# Como o repositório tem dezenas de mini-projetos (um package.json por pasta),
+# esta pipeline só instala e builda os exemplos que mudaram no PR/push,
+# em vez de rodar tudo (o que seria lento e caro).
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: ci-exemplos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect-changes:
+    name: Detectar pastas alteradas
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      has-changes: ${{ steps.set-matrix.outputs.has-changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Descobrir diretórios com package.json alterados
+        id: set-matrix
+        run: |
+          set -e
+          BASE_REF="${{ github.event.pull_request.base.sha || 'HEAD~1' }}"
+          if ! git cat-file -e "$BASE_REF" 2>/dev/null; then
+            BASE_REF=$(git rev-list --max-parents=0 HEAD)
+          fi
+          CHANGED_DIRS=$(git diff --name-only "$BASE_REF" HEAD \
+            | grep -E '(^|/)package\.json$|\.jsx?$|\.tsx?$|vite\.config\.' \
+            | xargs -n1 dirname \
+            | xargs -n1 -I{} sh -c 'while [ "{}" != "." ] && [ ! -f "{}/package.json" ]; do set -- "$(dirname "{}")"; done; [ -f "{}/package.json" ] && echo "{}"' 2>/dev/null \
+            | sort -u || true)
+
+          if [ -z "$CHANGED_DIRS" ]; then
+            echo "matrix=[]" >> "$GITHUB_OUTPUT"
+            echo "has-changes=false" >> "$GITHUB_OUTPUT"
+          else
+            JSON=$(printf '%s\n' "$CHANGED_DIRS" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+            echo "matrix=$JSON" >> "$GITHUB_OUTPUT"
+            echo "has-changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: Build (${{ matrix.dir }})
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "${{ matrix.dir }}/package-lock.json"
+
+      - name: Instalar dependências
+        working-directory: ${{ matrix.dir }}
+        run: npm install --no-audit --no-fund
+
+      - name: Lint (se configurado)
+        working-directory: ${{ matrix.dir }}
+        run: npm run lint --if-present
+
+      - name: Build (se configurado)
+        working-directory: ${{ matrix.dir }}
+        run: npm run build --if-present

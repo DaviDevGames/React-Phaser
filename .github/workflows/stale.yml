@@ -1,0 +1,31 @@
+name: Marcar issues e PRs inativos
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # todo dia às 03:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 45
+          days-before-close: 14
+          stale-issue-label: "inativo"
+          stale-pr-label: "inativo"
+          stale-issue-message: >
+            Esta issue está sem atividade há 45 dias. Se ainda for relevante,
+            comente ou remova a label `inativo` — caso contrário ela será
+            fechada automaticamente em 14 dias.
+          stale-pr-message: >
+            Este Pull Request está sem atividade há 45 dias. Se ainda estiver
+            sendo trabalhado, comente para mantê-lo aberto, caso contrário ele
+            será fechado automaticamente em 14 dias.
+          exempt-issue-labels: "roadmap,em-andamento,nao-marcar-stale"
+          exempt-pr-labels: "em-andamento,nao-marcar-stale"
