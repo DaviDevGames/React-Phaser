@@ -1,0 +1,31 @@
+name: "❓ Dúvida sobre um exemplo"
+description: Precisa de ajuda para entender ou rodar algum conteúdo da trilha?
+title: "[Dúvida]: "
+labels: ["duvida"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dica: para perguntas rápidas e discussões abertas, considere usar a aba
+        [Discussions](https://github.com/davidcreator/React-Phaser/discussions) em vez de uma issue.
+        Use este formulário quando achar que a dúvida pode indicar um problema na documentação do exemplo.
+
+  - type: input
+    id: location
+    attributes:
+      label: Pasta / exemplo relacionado
+      placeholder: "ex. 02-Scripts/04-Fisica/03-gravidade-planetas"
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Qual é a sua dúvida?
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: O que você já tentou?

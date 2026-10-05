@@ -1,0 +1,55 @@
+name: "🎮 Propor novo exemplo ou jogo"
+description: Sugira um novo script, mecânica ou jogo completo para a trilha React + Phaser.
+title: "[Novo exemplo]: "
+labels: ["novo-conteudo", "triagem"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Esse repositório é uma trilha de estudos — novos exemplos práticos são sempre bem-vindos!
+        Dê uma olhada na [estrutura de pastas no README](../../README.md) antes de sugerir, para saber onde o exemplo se encaixaria.
+
+  - type: input
+    id: title
+    attributes:
+      label: Nome do exemplo/jogo proposto
+      placeholder: "ex. Plataforma 2D com pulo duplo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria sugerida
+      options:
+        - 02-Scripts (componente/mecânica isolada)
+        - 03-Jogos (jogo completo)
+        - 04-Sprites
+        - 06-VFX
+        - 07-Sounds
+        - 08-Complementar
+        - Nova categoria (explique abaixo)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: O que esse exemplo ensina?
+      description: Qual conceito de Phaser/React o exemplo demonstra? Para qual nível (iniciante/intermediário/avançado)?
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Referências (opcional)
+      description: Links de documentação, tutoriais ou jogos de inspiração.
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribuição
+      options:
+        - label: Eu gostaria de implementar esse exemplo em um Pull Request
+          required: false

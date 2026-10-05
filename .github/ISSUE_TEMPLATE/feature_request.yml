@@ -1,0 +1,51 @@
+name: "✨ Sugerir melhoria"
+description: Tem uma ideia para melhorar a trilha, a documentação ou a organização do repositório?
+title: "[Melhoria]: "
+labels: ["enhancement", "triagem"]
+body:
+  - type: markdown
+    attributes:
+      value: Ideias são muito bem-vindas! Descreva sua sugestão com o máximo de contexto possível.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qual problema ou lacuna você percebeu?
+      description: Ex. "Falta um exemplo explicando tilemaps", "A seção X do README está confusa".
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solução proposta
+      description: Como você imagina que isso poderia ser resolvido?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área do repositório
+      options:
+        - Documentação (README / Ambiente)
+        - Scripts/exemplos (02-Scripts)
+        - Jogos completos (03-Jogos)
+        - Sprites / VFX / Sounds
+        - Infraestrutura (CI, templates, automações)
+        - Outra
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas (opcional)
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribuição
+      options:
+        - label: Eu gostaria de implementar essa melhoria em um Pull Request
+          required: false

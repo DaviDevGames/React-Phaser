@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Dúvidas e discussões gerais
+    url: https://github.com/davidcreator/React-Phaser/discussions
+    about: Use as Discussions para tirar dúvidas, pedir ajuda com código ou trocar ideias com a comunidade (ative as Discussions em Settings > General > Features).
+  - name: 📖 Wiki do projeto
+    url: https://github.com/davidcreator/React-Phaser/wiki
+    about: Consulte guias de instalação, FAQ e roadmap antes de abrir uma issue.
+  - name: 🔐 Relatar vulnerabilidade de segurança
+    url: https://github.com/davidcreator/React-Phaser/security/policy
+    about: Para problemas de segurança, siga a SECURITY.md em vez de abrir uma issue pública.

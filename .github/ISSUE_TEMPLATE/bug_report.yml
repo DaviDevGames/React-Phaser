@@ -1,0 +1,92 @@
+name: "🐛 Reportar um bug"
+description: Encontrou um exemplo que não funciona, erro de console ou comportamento inesperado? Conte aqui.
+title: "[Bug]: "
+labels: ["bug", "triagem"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar um problema! Quanto mais detalhes, mais rápido conseguimos corrigir.
+        Antes de continuar, verifique se já não existe uma [issue parecida](https://github.com/davidcreator/React-Phaser/issues).
+
+  - type: input
+    id: location
+    attributes:
+      label: Pasta / exemplo afetado
+      description: Caminho do exemplo onde o bug ocorre (ex. `02-Scripts/04-Fisica/06-bouncing-quicar`).
+      placeholder: "02-Scripts/.../nome-da-pasta"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descreva o bug
+      description: O que aconteceu? O que você esperava que acontecesse?
+      placeholder: Explique o problema de forma clara e objetiva.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      value: |
+        1. Entrar na pasta '...'
+        2. Rodar `npm install` e `npm run dev`
+        3. Fazer '...'
+        4. Ver o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / mensagens de erro
+      description: Cole aqui o erro do console do navegador ou do terminal.
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots ou GIFs (opcional)
+      description: Imagens ajudam muito a entender bugs visuais em jogos.
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Versão do Node.js
+      placeholder: "ex. v20.11.0 (rode `node -v`)"
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Navegador(es) testado(s)
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Edge
+        - Safari
+        - Outro (descreva nos comentários)
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema operacional
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Outro
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: Já rodei `npm install` novamente antes de reportar
+          required: false
+        - label: Verifiquei que não existe uma issue duplicada
+          required: true
