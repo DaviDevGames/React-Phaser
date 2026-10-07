@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 12 - HUD - UI/UX | Meu Primeiro Jogo</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <!-- É aqui dentro que o Phaser vai colocar o desenho do jogo -->
+    <div id="game-container"></div>
+
+    <!-- ================================================================
+         Toda página carrega os scripts DE CIMA PARA BAIXO.
+         A ordem aqui é importante: biblioteca -> nossa cena -> ligar o jogo.
+         ================================================================ -->
+    <script src="../lib/phaser.min.js"></script>   <!-- 1) a biblioteca Phaser -->
+    <script src="src/scenes/Jogo.js"></script>     <!-- 2) a cena que VOCÊ vai editar -->
+    <script src="src/main.js"></script>            <!-- 3) liga tudo e começa o jogo -->
+</body>
+</html>
