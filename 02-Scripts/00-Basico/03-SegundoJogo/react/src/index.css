@@ -1,0 +1,65 @@
+:root {
+  font-family: 'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+  color: #e8ecff;
+  background: radial-gradient(circle at 50% 0%, #3e2723 0%, #1a120b 60%, #0d0805 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d8a48f;
+}
+
+h1 {
+  margin: 0.35rem 0;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+.subtitle {
+  margin: 0;
+  color: #d8c4b4;
+}
+
+.subtitle code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+
+.game-shell {
+  margin-top: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.phaser-host canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+}
